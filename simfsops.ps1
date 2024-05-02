@@ -310,7 +310,7 @@ function CreateDataSet {
           $fName = "{0:d4}{1:d${sPad}}.file" -f $nf, $fsize
           $fPath = Join-Path -Path $DirWidth -ChildPath $fName
           if (-not (Test-Path -Path $fPath)) {
-            $fullPath = [IO.Path]::GetFullPath($fPath, (Get-Location -PSProvider FileSystem).ProviderPath)
+            $fullPath = [IO.Path]::GetFullPath([IO.Path]::Combine((Get-Location -PSProvider FileSystem).ProviderPath, $fPath))
             if ($Estimate) { $label = 'Computing' } else { $label = 'Writing' }
             $pct = $nfile / $realTot * 100
             $nfile++
