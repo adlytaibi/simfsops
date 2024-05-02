@@ -122,7 +122,7 @@ param (
 )
 
 $fsSep = [IO.Path]::DirectorySeparatorChar
-$fullPath = [IO.Path]::GetFullPath($Path, (Get-Location -PSProvider FileSystem).ProviderPath)
+$fullPath = [IO.Path]::GetFullPath([IO.Path]::Combine((Get-Location -PSProvider FileSystem).ProviderPath, $Path))
 
 $template = @{
   empty  = @{
